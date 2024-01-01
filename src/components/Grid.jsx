@@ -17,11 +17,11 @@ function Grid(props) {
 
     return (
     <div>
-        <div className='bg-yellow-100 h-1/2 w-'>
+        <div className='h-1/2 w-'>
             {
             props.AnswerGrid.map( (level, y) => {
                 return (
-                    <div className='bg-green-100 flex flex-row justify-center'>
+                    <div className='flex flex-row justify-center'>
                         {level.map((letterBox, x) => {
                         return (
                             <div className={convertColor(x,y) + ' flex flex-row h-[3.75rem] w-[3.75rem] mx-0.5 my-0.5 justify-center items-center border border-gray-700'}>

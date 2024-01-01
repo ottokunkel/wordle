@@ -9,23 +9,23 @@ function Keyboard(props) {
 
     return (
         <div >
-            <div className='bg-blue-100'>
-                <div className='bg-blue-200 flex flex-row justify-center'>
+            <div className=''>
+                <div className='flex flex-row justify-center'>
                     {row_1.map( (letter) => {
-                    return (<button onClick={() => {props.handleKeypress(letter)}} className='w-[2.475rem] h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold rounded'>{letter}</button>);
+                    return (<button disabled={props.onSwitch} onClick={() => {props.handleKeypress(letter)}} className='w-[2.475rem] h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold rounded'>{letter}</button>);
                     })}
                 </div>
                 <div className='flex flex-row justify-center mx-5'>
                     {row_2.map( (letter) => {
-                    return (<button onClick={() => {props.handleKeypress(letter)}} className='w-10 h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold rounded'>{letter}</button>);
+                    return (<button disabled={props.onSwitch} onClick={() => {props.handleKeypress(letter)}} className='w-10 h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold rounded'>{letter}</button>);
                     })}
                 </div>
                 <div className='flex flex-row justify-center'>
-                    <button onClick={() => {props.handleEnter()}} className='w-[3.75rem] h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold text-sm rounded'>ENTER</button>
+                    <button disabled={props.onSwitch} onClick={() => {props.handleEnter()}} className='w-[3.75rem] h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold text-sm rounded'>ENTER</button>
                     {row_3.map( (letter) => {
                     return (<button onClick={() => {props.handleKeypress(letter)}} className='w-10 h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold rounded'>{letter}</button>);
                     })}
-                    <button onClick={() => {props.handleDelete()}} className='w-[3.75rem] h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold  rounded'>DEL</button>
+                    <button disabled={props.onSwitch} onClick={() => {props.handleDelete()}} className='w-[3.75rem] h-14 mx-0.5 my-0.5 bg-gray-500 text-white font-bold  rounded'>DEL</button>
                 </div>
                 
                 
