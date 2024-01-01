@@ -115,14 +115,14 @@ const handleEnter = () => {
   return (
     <>
       <h1>solution: {word}</h1>
-      <div className='grid grid-rows-2 gap-4'>
-
-        <div className='flex flex-col justify-center'>
-          <div className='basis-1/2'>
+      <div>
+        <div className='flex flex-col justify-center items-center'>
+          <div className='basis-1/3'>
             <Grid colorGrid={colorGrid} AnswerGrid={answerGrid}/>
           </div>
-          <div className='basis-1/2'>
-             <Keyboard onSwitch={gameOver} handleKeypress={updateLetter} handleDelete={handleDelete} handleEnter={handleEnter}/>
+          <div className='h-5'></div>
+          <div className='basis-1/3'>
+            <Keyboard onSwitch={gameOver} handleKeypress={updateLetter} handleDelete={handleDelete} handleEnter={handleEnter}/> 
           </div>
          
         </div>
