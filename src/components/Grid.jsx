@@ -1,42 +1,38 @@
 import React, { useEffect, useState } from 'react'
+import Cell from './Cell';
+import CompletedRow from './CompletedRow';
+import CurrentRow from './CurrentRow';
+import EmptyRow from './EmptyRow';
 
-function Grid(props) {
+function Grid({
+    currentGuess,
+    prevGuesses,
+    answer,
+}) {
     
-    const textColor = "#000000";
-    const convertColor = (x,y) => {
-        switch(props.colorGrid[y][x]) {
-            case 'b':
-                return "bg-[#787c7e]";
-            case 'g':
-                return "bg-[#6aa964]";
-            case 'y':
-                return "bg-[#c9b458]";
-            default:
-              return "";
-          }
+    
+    const totalAttemptsAllowed = 6;
+    var emptyRows = totalAttemptsAllowed - prevGuesses.length - 1;
+    let emptyRowsComponents = [];
+    while(emptyRows--){
+        emptyRowsComponents.push(emptyRows);
     }
 
     return (
     <div>
-        <div className='h-1/2 w-'>
-            {
-            props.AnswerGrid.map( (level, y) => {
-                return (
-                    <div className='flex flex-row justify-center'>
-                        {level.map((letterBox, x) => {
-                        return (
-                            <div className={convertColor(x,y) + ' flex flex-row h-[3.25rem] w-[3.25rem] mx-0.5 my-0.5 justify-center items-center border border-gray-700'}>
-                                <div className={" text-["+textColor+"] font-bold text-[2rem] uppercase"}>
-                                    {letterBox} 
-                                </div>
-                            </div>
-                            );
-                        })}
-                    </div>
-                );
-            })
-            }
-        </div>
+        {/* List of every previous guess */}
+        {prevGuesses.map((prevGuess, i) => {
+            return (
+                <CompletedRow 
+                    answer={answer}
+                    prevGuess={prevGuesses[i]}
+                />
+            );
+        })}
+        <CurrentRow currentGuess={currentGuess}></CurrentRow>
+        {emptyRowsComponents.map( (_, i) => {
+            return (<EmptyRow />)
+        })}
         
     </div>
     )
