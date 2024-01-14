@@ -4,7 +4,8 @@ import { getStatuses } from '../services/logic';
 
 function CompletedRow({
     prevGuess,
-    answer
+    answer,
+    isRevealing
 }) {
 
 
@@ -19,9 +20,11 @@ function CompletedRow({
                     key={index} 
                     value={letter} 
                     isCompleted={true} 
+                    position = {index}
                     status={
                         statusArr[index]
                     }
+                    isRevealing={isRevealing}
                     />
                 ))}
             </div>

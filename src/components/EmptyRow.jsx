@@ -13,6 +13,8 @@ function EmptyRow() {
             value={''} 
             isCompleted={false} 
             status={'current'}
+            position = {i}
+            isRevealing={false}
             />
         ))}
     </div>

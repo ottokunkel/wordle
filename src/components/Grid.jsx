@@ -8,6 +8,7 @@ function Grid({
     currentGuess,
     prevGuesses,
     answer,
+    isRevealing,
 }) {
     
     
@@ -17,7 +18,7 @@ function Grid({
     while(emptyRows--){
         emptyRowsComponents.push(emptyRows);
     }
-
+`   `
     return (
     <div>
         {/* List of every previous guess */}
@@ -26,10 +27,11 @@ function Grid({
                 <CompletedRow 
                     answer={answer}
                     prevGuess={prevGuesses[i]}
+                    isRevealing={isRevealing && i == (prevGuesses.length - 1)}
                 />
             );
         })}
-        <CurrentRow currentGuess={currentGuess}></CurrentRow>
+        <CurrentRow currentGuess={currentGuess} isRevealing={false}></CurrentRow>
         {emptyRowsComponents.map( (_, i) => {
             return (<EmptyRow />)
         })}

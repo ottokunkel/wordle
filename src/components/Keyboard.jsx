@@ -23,7 +23,6 @@ function Keyboard({
             onDelete()
           } else {
             const key = e.key
-            // TODO: check this test if the range works with non-english letters
             if (key.length === 1 && key >= 'a' && key <= 'z') {
               onKeypress(key)
             }

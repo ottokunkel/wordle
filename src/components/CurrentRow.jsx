@@ -2,7 +2,8 @@ import React from 'react'
 import Cell from './Cell';
 
 function CurrentRow({
-    currentGuess
+    currentGuess,
+    isRevealing
 }) {
     
     
@@ -13,7 +14,9 @@ function CurrentRow({
                 key={index} 
                 value={letter} 
                 isCompleted={false} 
+                position = {index}
                 status={'current'}
+                isRevealing={isRevealing}
                 />
             ))}
         </div>
