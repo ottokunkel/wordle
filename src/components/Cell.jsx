@@ -11,7 +11,6 @@ function Cell({
     position,
     isRevealing,
   }) {
-    console.log(position)
     const isFilled = (value === '') ? false : true;
     const lightMode = true;
     const animationDelay = `${position * 500}ms`;
@@ -26,7 +25,7 @@ function Cell({
                 !isFilled,
             'border-[#878a8c]':
                 isFilled,
-            'contains bg-[#6aa964]':
+            'bg-[#6aa964]':
                 status === 'correct',
             'bg-[#c9b458]':
                 status === 'contains',

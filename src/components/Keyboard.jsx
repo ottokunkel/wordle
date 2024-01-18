@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
+import Key from './key';
+import { getCharStatus } from '../services/logic';
 
 function Keyboard({
     onKeypress,
     onEnter,
     onDelete,
-    onSwitch
+    charStatuses,
 }) {
     const row_1 = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
     const row_2 = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
     const row_3 = ['z', 'x', 'c', 'v', 'b', 'n', 'm'];
-    
-    const [keyWidth,setKeyWidth] = useState(2.75);
-    const [keyHeight,setKeyHeight] = useState(3.75);
-    const [buttonWidth, setButtonWidth] = useState(3.75);
-    
+  
     useEffect(() => {
         const listener = (e) => {
           if (e.key === 'Enter') {
@@ -28,39 +26,64 @@ function Keyboard({
             }
           }
         }
-
         window.addEventListener('keyup', listener)
         return () => {
           window.removeEventListener('keyup', listener)
         }
       }, [onEnter, onDelete, onKeypress])
-
+    
+  
+    console.log(charStatuses)
     return (
         <div >
             <div className=''>
                 <div className='flex flex-row justify-center'>
-                    {row_1.map( (letter) => {
-                    return (<button disabled={onSwitch} onClick={() => {onKeypress(letter)}} className={
-                        "w-[2.75rem] h-[3.75rem] mx-0.5 my-0.5 bg-gray-500 text-white font-bold rounded"
-                    }>{letter}</button>);
-                    })}
+                  {row_1.map( (letter, i) => { 
+                    return (
+                      <Key 
+                        onClickMethods={{onDelete, onEnter, onKeypress}}
+                        key={i} 
+                        text={letter} 
+                        type={'key'}
+                        color={charStatuses[letter]}
+                      />
+                    )
+                  })}
                 </div>
                 <div className='flex flex-row justify-center mx-5'>
-                    {row_2.map( (letter) => {
-                    return (<button disabled={onSwitch} onClick={() => {onKeypress(letter)}} className={"w-[2.75rem] h-[3.75rem] mx-0.5 my-0.5 bg-gray-500 text-white font-bold rounded"}>{letter}</button>);
-                    })}
+                  {row_2.map( (letter, i) => { 
+                    return (
+                      <Key 
+                      onClickMethods={{onDelete, onEnter, onKeypress}} 
+                      key={i} 
+                      text={letter} 
+                      type={'key'}
+                      />
+                    )
+                  })}
                 </div>
                 <div className='flex flex-row justify-center'>
-                    <button disabled={onSwitch} onClick={() => {onEnter()}} className={"w-[4.125rem] h-[3.75rem] mx-0.5 my-0.5 bg-gray-500 text-white font-bold text-sm rounded"}>ENTER</button>
-                    {row_3.map( (letter) => {
-                    return (<button onClick={() => {onKeypress(letter)}} className={"w-[2.75rem] h-[3.75rem] mx-0.5 my-0.5 bg-gray-500 text-white font-bold rounded"}>{letter}</button>);
+                  <Key 
+                    onClickMethods={{onDelete, onEnter, onKeypress}} 
+                    type={'delete'} 
+                    text={'delete'}
+                    />
+                  {row_3.map( (letter, i) => { 
+                    return (
+                      <Key 
+                        onClickMethods={{onDelete, onEnter, onKeypress}} 
+                        key={i} 
+                        text={letter} 
+                        type={'key'}/>
+                      )
                     })}
-                    <button disabled={onSwitch} onClick={() => {onDelete()}} className={"w-[4.125rem] h-[3.75rem] mx-0.5 my-0.5 bg-gray-500 text-white font-bold  rounded"}>DEL</button>
+                  <Key 
+                    onClickMethods={{onDelete, onEnter, onKeypress}} 
+                    type={'enter'} 
+                    text={'enter'}
+                    />
                 </div>
-                
-                
-               
-                
+                 
             </div>
             
         </div>

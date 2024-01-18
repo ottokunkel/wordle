@@ -3,7 +3,7 @@ import Keyboard from './components/keyboard'
 import Grid from './components/Grid';
 import wordDict from './wordDict.json';
 import possibleWords from './possibleWords.json';
-import { binarySearch } from './services/logic';
+import { binarySearch, getCharStatus } from './services/logic';
 
 function App() {
 
@@ -14,6 +14,7 @@ function App() {
   const tempWord = possibleWords[Math.floor(Math.random()*possibleWords.length)];
   const [word, setWord] = useState(tempWord);
   const [isRevealing, setIsRevealing] = useState(false);
+  const [charStatus, setCharStatus] = useState([]);
   //chooses a random word
 
   const addGuess = (str) => {
@@ -64,7 +65,16 @@ const handleEnter = () => {
       setCurrentLetter(0);
       setCurrentGuess(new Array(5).fill(''));
       setTimeout(() => {
-        setIsRevealing(false)
+      setIsRevealing(false)
+
+     
+      
+      let guessArr = checkedWord.split('');
+      const tempDict = getCharStatus(guessArr, word);
+      setCharStatus(Object.assign({}, charStatus, tempDict));
+      
+      
+      
         
       }, (500 * 5))
 
@@ -97,7 +107,7 @@ const handleEnter = () => {
           </div>
           <div className='h-5'></div>
           <div className='basis-1/3'>
-            <Keyboard onSwitch={false} onKeypress={updateLetter} onDelete={handleDelete} onEnter={handleEnter}/> 
+            <Keyboard charStatuses={charStatus} onSwitch={false} onKeypress={updateLetter} onDelete={handleDelete} onEnter={handleEnter}/> 
           </div>
          
         </div>

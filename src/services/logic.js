@@ -42,3 +42,20 @@ export const getStatuses = (guessArr, answer) => {
     return statusArr;
 }
 
+export const getCharStatus = (guessArr, answer) => {
+  var answerArr = [...answer]
+  var statusDict = {};
+  for(let i = 0; i < guessArr.length; i++){
+    if(answerArr[i] == guessArr[i]){
+      statusDict[guessArr[i]] = 'correct';
+    }else if(answer.includes(guessArr[i])){
+      statusDict[guessArr[i]] = 'contains';
+    }else{
+      statusDict[guessArr[i]] = 'absent';
+    }
+  }
+  return statusDict;
+}
+
+
+
