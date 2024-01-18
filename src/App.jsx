@@ -99,7 +99,7 @@ const handleEnter = () => {
 
   return (
     <>
-      <h1>solution: {word}</h1>
+      <h1></h1>
       <div>
         <div className='flex flex-col justify-center items-center'>
           <div className='basis-1/3'>
