@@ -49,7 +49,8 @@
 - [ ] Add Darkmode
 - [ ] Refine In-line comments
 - [ ] Add Multiple Languages
-
+- [ ] Add Heading & Statistics Pop-up
+- [ ] Fix Bugs
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
